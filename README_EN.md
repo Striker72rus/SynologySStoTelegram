@@ -44,7 +44,7 @@ Configuration example:
 version: '3.8'
 services:
     php:
-        image: striker72rus/video-ss-to-tg-php:bets
+        image: striker72rus/video-ss-to-tg-php:latest
         hostname: php
         restart: on-failure
         volumes:
