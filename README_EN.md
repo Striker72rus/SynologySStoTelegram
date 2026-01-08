@@ -46,7 +46,7 @@ services:
     php:
         image: striker72rus/video-ss-to-tg-php:latest
         hostname: php
-        restart: on-failure
+        restart: unless-stopped
         volumes:
             - '/PATH_TO_DATA:/usr/src/app/data'
         ports:
