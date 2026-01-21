@@ -181,6 +181,6 @@ Thanks for the idea to [samoswall](https://github.com/samoswall)
 <a id="A9"></a>
 ## Support the project
 
-[![Donate](https://img.shields.io/badge/donate-Tinkoff-yellow.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+[![Donate](https://img.shields.io/badge/donate-Tinkoff-yellow.svg)](https://www.donationalerts.com/r/striker_72rus)
 
 Please include the project name in the message. Thank you!

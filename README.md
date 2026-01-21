@@ -178,6 +178,6 @@ http://192.168.1.2:8888
 <a id="A9"></a>
 ## Поддержать проект
 
-[![Donate](https://img.shields.io/badge/donate-Tinkoff-yellow.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+[![Donate](https://img.shields.io/badge/donate-Tinkoff-yellow.svg)](https://www.donationalerts.com/r/striker_72rus)
 
 Просьба в сообщение напишите название проекта. Спасибо!
