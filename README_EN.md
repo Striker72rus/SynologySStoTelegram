@@ -1,15 +1,16 @@
 # Attention!
-This project is not finished yet. It is currently in **Beta testing**.  
-During use, critical errors may occur, which will be fixed in future updates.
+This project is not finished yet. It is currently in beta testing. During use, critical errors may occur and will be fixed later.
+
 
 <a href="https://t.me/+j8Ohh3v0FZ8zNTgy">
   <img src="https://www.svgrepo.com/download/349527/telegram.svg" width="20"> Telegram Group
 </a>
 
-# SynologySStoTelegram
-Русская версия: [README.md](README.md)
 
-Sending videos triggered by motion detection from **Synology Surveillance Station** to **Telegram** using Webhooks
+# SynologySStoTelegram
+Russian version: [README.md](README.md)
+
+Send motion-detection videos from Synology Surveillance Station to Telegram using a webhook.
 
 [![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
 
@@ -27,15 +28,18 @@ Sending videos triggered by motion detection from **Synology Surveillance Statio
   - [Preparation](#preparation)
   - [Installation via docker-compose](#installation-via-docker-compose)
   - [Installation via Container Manager](#installation-via-container-manager)
-  - [Project configuration](#project-configuration)
-  - [Camera configuration](#camera-configuration)
-  - [Acknowledgements](#acknowledgements)
-  - [Support the project](#support-the-project)
+  - [Project setup](#project-setup)
+  - [Telegram setup](#telegram-setup)
+  - [Camera setup](#camera-setup)
+  - [How to update the project](#how-to-update-the-project)
+- [Acknowledgements](#acknowledgements)
+- [Support the project](#support-the-project)
 
+<a id="A1"></a>
 ## Preparation
-1) Create a folder via **File Station** in any convenient location.  
-2) Right-click on it and select **Properties**.  
-3) We are interested in **Location** — remember or write it down, it will be needed later.
+1) Create a folder in File Station in any convenient location.
+2) Right-click it and open its properties.
+3) Find the "Location" value and save it somewhere, you will need it later.
 
 ![](/images/1.0.png)
 
@@ -57,131 +61,135 @@ services:
             - '/PATH_TO_DATA:/usr/src/app/data'
         ports:
             - '8888:80'
+            - '18081:18081' # Required for real-time dashboard updates.
 ```
 
 <a id="A3"></a>
 ## Installation via Container Manager
 
-First, open **Container Manager** and click the **Create** button.
+First, open the project section and click "Create".
 
 ![](/images/1.png)
-
-1) Enter the project name.  
-2) Choose the path where `compose.yaml` will be stored (you can use the data path created above).  
-3) Source — create `docker-compose.yml`.  
-4) Paste the configuration from [here](#installation-via-docker-compose) into the input field. Don’t forget to replace the path with your own.  
-5) If everything is correct, click **Next**.
+1) Enter the project name.
+2) Select where `compose.yaml` will be stored (you can use the path created above for data).
+3) Source: create `docker-compose.yml`.
+4) Paste the config from [here](#installation-via-docker-compose). Do not forget to replace the path with your own.
+5) If everything is correct, click next.
 
 ![](/images/2.png)
 
-Click **Next**.
+Click next.
 
 ![](/images/3.png)
 
-Review the data and click **Done**. Leave the checkbox **Start the project after creation** enabled.
+Check the details and click "Done". Keep "Run this project after creation" enabled.
 
 ![](/images/4.png)
 
-Wait while the manager downloads and installs everything.
+Wait until the manager downloads and installs everything.
 
 ![](/images/5.png)
 
-When you see this message, the project has been successfully installed. You can proceed to the [project configuration](#project-configuration).
+When you see this message, the project is installed successfully. You can proceed to [project setup](#project-setup).
 
 <a id="A4"></a>
-## Project configuration
+## Project setup
 
-Open a browser and go to  
-`http://synology-ip:port` specified above (default: 8888)
-
+Open in browser: `http://synology-ip-address:port` you set above (default is `8888`).
 Example:
 ```
 http://192.168.1.2:8888
 ```
-
-If there is no existing data, the registration page will open.
+If no data was set before, the registration page will open.
 
 ![](/images/6.png)
 
-After registration, log in to the application and you will see the settings page:
+After registration, log in and open the settings page:
 
 ![](/images/6.1.png)
 ![](/images/6.2.png)
 ![](/images/6.3.png)
 
-- **Telegram settings**
-  * Enter the token obtained from **BotFather**.
-  * Enter the chat ID where notifications will be sent.
-  * Click **Save**.
-  * Click **Test** — a test message will be sent to the chat. If you receive it, Telegram is configured correctly.
+- Telegram settings
+  * Enter the token received from BotFather.
+  * Click Save.
+  * Then proceed to <a id="A5">adding chats</a>.
 
-  You can also change the default notification text.
+  You can also replace the default notification text.
 
-- **Synology settings**  
-  You need to enter:
+- Synology settings<br>
+  Enter:
   * Synology IP address
   * Web interface port
   * Login
   * Password
-  * OTP, if enabled. However, it is recommended to use a separate user as described in the <a id="A1">Preparation</a> section to avoid token expiration and repeated OTP entry.
+  * OTP if enabled. It is better to use a separate user as shown in <a id="A1">Preparation</a> to avoid token expiration and repeated OTP input.
 
 <a id="A5"></a>
-## Camera configuration
-On the first launch, click **Refresh list** to retrieve the list of cameras.
+## Telegram setup
 
-![](/images/7.png)
+An automatic mechanism is implemented for adding chats, so the user does not need to manually specify IDs.
+1) Add your bot to the required chats/groups.
+2) Click the auto-add chat button.
+![](/images/14.0.png)
+3) The project will start waiting for the `/chat` command. Send this command to all required chats/topics. The bot will detect and add them automatically.
+![](/images/14.png)
+4) When all chats/topics are added, stop listening by pressing the corresponding button.
+5) The bot detects chat/topic names automatically, but if needed you can rename them manually.
+6) You can test each chat/topic by clicking Test. The bot will send a test message there.
 
-After refreshing, the cameras will appear in the interface.  
-Only cameras that record **24/7** or **event-based recording** are supported.  
-**Hybrid recording mode is not supported.**
+<a id="A6"></a>
+## Camera setup
+On first launch, click "Refresh list" to load the list of cameras.
+
+After refresh, cameras will appear in the interface.<br>
+Only cameras that record 24/7 or record on event are supported. **Hybrid mode is not supported.**
 
 ![](/images/8.png)
 
-From here, you can create an event interception rule using the **Create rule** button.  
-After clicking, a configuration window will appear. It can also be opened later via the **Configure** button:
+From here you can create an event interception rule using the "Create rule" button.<br>
+After clicking it, a settings window will appear. You can open it later with the "Configure" button:
 
 ![](/images/9.png)
 
-Here you can configure how notifications are sent:
-- **Send image on motion** — as soon as a webhook is received, the system takes a snapshot from the camera and sends it.
-- **Send full motion video** — the system waits until motion ends and sends the full video.
-- **Send in chunks** — the system sends video fragments in 15-second intervals as long as motion continues.
+Here you can choose how notifications are sent:
+- **Photo + video on request**: as soon as a hook arrives, the system takes a snapshot and sends it with a "request video" button.
+- **Full video**: the system waits until the event ends and sends the full video.
+- **Video chunks**: the system sends video fragments every N seconds while the event is active.
 
-These options can be combined.
-
-You can also manage settings via the bot.  
-Call it with the command:
+You can also manage settings via the bot.
+Run command:
 ```
 /menu
 ```
 
 ![](/images/13.1.png)
 
-Select the desired camera and configure it as you like:
+Select the required camera and configure it as needed:
 
 ![](/images/13.2.png)
 
-<a id="A6"></a>
+<a id="A7"></a>
 ## How to update the project
 
-Updating the project is very easy via the interface.  
-Go to the **Update** tab.  
-If an update is available, the **Update to latest version** button will appear.
+You can update the project directly from the interface.
+Open the "Update" tab.
+If an update is available, the "Update to latest version" button will appear.
 
-You can also see a brief summary of what has changed.
+You can also see a short summary of what has changed.
 
 ![](/images/11.png)
 
-After starting the update process, the system will automatically download and install everything.  
-The update process may take from **1 to 5 minutes**, depending on your internet speed.
+After starting the update process, the system will download and install everything automatically.
+The update may take from 1 to 5 minutes depending on your internet speed.
 
 <a id="B6"></a>
 ## Acknowledgements
 Thanks for the idea to [samoswall](https://github.com/samoswall)
 
-<a id="A9"></a>
+<a id="A8"></a>
 ## Support the project
 
 [![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
 
-Please include the project name in the message. Thank you!
+Please include the project name in your message. Thank you!
