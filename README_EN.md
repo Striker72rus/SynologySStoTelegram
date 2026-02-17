@@ -11,7 +11,8 @@ During use, critical errors may occur, which will be fixed in future updates.
 
 Sending videos triggered by motion detection from **Synology Surveillance Station** to **Telegram** using Webhooks
 
-[![Donate](https://img.shields.io/badge/donate-Tinkoff-yellow.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+[![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
+
 ![](https://img.shields.io/github/watchers/Striker72rus/SynologySStoTelegram.svg)
 ![](https://img.shields.io/github/stars/Striker72rus/SynologySStoTelegram.svg)
 
@@ -181,6 +182,6 @@ Thanks for the idea to [samoswall](https://github.com/samoswall)
 <a id="A9"></a>
 ## Support the project
 
-[![Donate](https://img.shields.io/badge/donate-Tinkoff-yellow.svg)](https://www.donationalerts.com/r/striker_72rus)
+[![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
 
 Please include the project name in the message. Thank you!
