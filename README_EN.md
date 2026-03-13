@@ -12,7 +12,9 @@ Russian version: [README.md](README.md)
 
 Send motion-detection videos from Synology Surveillance Station to Telegram using a webhook.
 
-[![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
+[![Donate_tbank](./assets/T-Bank_RU_logo.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+
+[![Donate boosty](./assets/Boosty_logo.svg)](https://boosty.to/striker72rus/donate)
 
 ![](https://img.shields.io/github/watchers/Striker72rus/SynologySStoTelegram.svg)
 ![](https://img.shields.io/github/stars/Striker72rus/SynologySStoTelegram.svg)
@@ -190,6 +192,8 @@ Thanks for the idea to [samoswall](https://github.com/samoswall)
 <a id="A8"></a>
 ## Support the project
 
-[![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
+[![Donate_tbank](./assets/T-Bank_RU_logo.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+
+[![Donate boosty](./assets/Boosty_logo.svg)](https://boosty.to/striker72rus/donate)
 
 Please include the project name in your message. Thank you!

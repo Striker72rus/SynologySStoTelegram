@@ -12,7 +12,9 @@ English version: [README_EN.md](README_EN.md)
 
 Отправка видео по детектору движения Synology Surveillance Station в Telegram используя Webhook
 
-[![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
+[![Donate_tbank](./assets/T-Bank_RU_logo.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+
+[![Donate_boosty](./assets/Boosty_logo.svg)](https://boosty.to/striker72rus/donate)
 
 ![](https://img.shields.io/github/watchers/Striker72rus/SynologySStoTelegram.svg)
 ![](https://img.shields.io/github/stars/Striker72rus/SynologySStoTelegram.svg)
@@ -191,6 +193,8 @@ http://192.168.1.2:8888
 <a id="A8"></a>
 ## Поддержать проект
 
-[![Donate](./assets/donate-donationalerts.svg)](https://boosty.to/striker72rus/donate)
+[![Donate_tbank](./assets/T-Bank_RU_logo.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
+
+[![Donate boosty](./assets/Boosty_logo.svg)](https://boosty.to/striker72rus/donate)
 
 Просьба в сообщение напишите название проекта. Спасибо!
