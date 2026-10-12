@@ -10,7 +10,20 @@ This project is not finished yet. It is currently in beta testing. During use, c
 # SynologySStoTelegram
 Russian version: [README.md](README.md)
 
-Send motion-detection videos from Synology Surveillance Station to Telegram using a webhook.
+Notifications from Synology Surveillance Station: motion, faces, license plates, AI events, snapshots and video are delivered to **Telegram**, **VK**, **MAX**, **MQTT**, **Web Push** and external **webhooks**. Works with all Surveillance Station versions, including 9.3+ where Synology removed part of the API: the mode is detected automatically.
+
+## Features
+- **Messengers:** Telegram (also via WireGuard / AmneziaWG and VLESS VPN), VK, MAX; separate delivery queues with retries.
+- **Other channels:** MQTT (e.g. for Home Assistant), Web Push, external webhooks, external API with Swagger docs.
+- **Notification formats:** photo + video on request, full video, video in chunks; customizable message template with preview.
+- **Dashboard:** latest motions with previews and video, 24-hour summary (hourly chart, delivery health, noisy cameras), pinned events, "Why didn't it arrive?" trace.
+- **Cameras:** online/offline status, "snapshot now", motion rules, notification schedule per camera and Home Mode.
+- **Bot control:** `/menu` command, activity digest with a chart.
+- **Reliability:** system watchdog (workers, disk, Synology availability), automatic settings backups, "Health" page with storage, event log.
+- **Compatibility:** automatic Synology API detection (SS 8.x, 9.x), compatibility diagnostics, 2FA with device token, HTTPS.
+- **Security:** login throttling, per-section permissions, CSRF protection for AJAX, settings export/import without secrets.
+- **Remote mode:** portal and bridge between several installations.
+- **UI:** light/dark theme, Russian and English, mobile layout, installable as a PWA.
 
 [![Donate_tbank](./assets/T-Bank_RU_logo.svg)](https://www.tinkoff.ru/rm/dontsov.sergey22/KEZ6r54259)
 
@@ -23,16 +36,39 @@ Send motion-detection videos from Synology Surveillance Station to Telegram usin
 ![](https://badgen.net/static/API/Synology%20Surveillance%20Station)
 ![](https://badgen.net/static/Made%20with/PHP)
 
+## Interface
+Dashboard: 24-hour summary, activity chart, latest motions (camera frames are blurred in the screenshots).
+
+![](/images/ui-dashboard.png)
+
+Per-camera notification schedule:
+
+![](/images/ui-settings-schedule.png)
+
+Channels: MQTT, external API and webhooks (secrets are hidden in the screenshots):
+
+![](/images/ui-settings-mqtt.png)
+![](/images/ui-settings-api.png)
+
+Health center (processes, storage, delivery) and API docs:
+
+![](/images/ui-health.png)
+![](/images/ui-api-docs.png)
+
 ## Contents
 - [Attention!](#attention)
 - [SynologySStoTelegram](#synologysstotelegram)
   - [Contents](#contents)
+  - [Features](#features)
+  - [Interface](#interface)
   - [Preparation](#preparation)
   - [Installation via docker-compose](#installation-via-docker-compose)
   - [Installation via Container Manager](#installation-via-container-manager)
   - [Project setup](#project-setup)
   - [Telegram setup](#telegram-setup)
   - [Camera setup](#camera-setup)
+  - [Logs](#logs)
+  - [Users](#users)
   - [How to update the project](#how-to-update-the-project)
 - [Acknowledgements](#acknowledgements)
 - [Support the project](#support-the-project)
@@ -171,6 +207,13 @@ Select the required camera and configure it as needed:
 
 ![](/images/13.2.png)
 
+The menu (Telegram and MAX) provides:
+- **Status** of notifications and a 24-hour summary in the header.
+- **⏸ Pause** for 1, 3, 8, 24 hours or until morning, and **▶️ Resume**.
+- **📊 Summary** for the day, **🩺 Health** (processes and free disk space), **🔁 Retry failed** deliveries.
+- In the camera menu: status (online, recording), **📸 Snapshot** now, **🕘 Events** (latest in 24 hours with a video request) and **🔕 Mute** for 1, 8 or 24 hours.
+- Video chunk settings appear only when "Video highlights" mode is on.
+
 <a id="A7"></a>
 ## How to update the project
 
@@ -184,6 +227,31 @@ You can also see a short summary of what has changed.
 
 After starting the update process, the system will download and install everything automatically.
 The update may take from 1 to 5 minutes depending on your internet speed.
+
+<a id="A9"></a>
+## Logs
+The "More → Logs" section helps you find out what happened in the system.
+
+![](/images/ui-logs.png)
+
+- Log files are grouped by date; each file shows the number of critical errors (CRIT), errors (ERR) and warnings (WARN).
+- Inside a file you can search the text and enable "follow the tail" (new lines appear automatically).
+- The "Update logs" tab shows the log of the last application update.
+- "Download logs for date (ZIP)" builds an archive for the selected day, "Send to support" opens the support Telegram bot so you can send the selected log to the developer.
+- Third-party logs (for example, a server report) can be uploaded as a file or a ZIP archive and will appear in the list below.
+- Old dates can be deleted with the trash button (with confirmation). Tokens and passwords are never written to logs.
+
+<a id="A10"></a>
+## Users
+The "Users" section is available to the owner (super admin) only.
+
+![](/images/ui-users.png)
+
+- **Add** — create an account (email and password) and choose the sections it can access: dashboard, settings, cameras, documentation, logs, update, users.
+- **Edit** — change permissions and status (active or blocked).
+- **Reset password** — set a new password; the user will be asked to change it at login (the "Password change required" column).
+- **Delete** — remove the account (with confirmation).
+- Login is protected by attempt throttling and CSRF protection.
 
 <a id="B6"></a>
 ## Acknowledgements
