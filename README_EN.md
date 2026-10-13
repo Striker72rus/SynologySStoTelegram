@@ -3,7 +3,7 @@ This project is not finished yet. It is currently in beta testing. During use, c
 
 
 <a href="https://t.me/+j8Ohh3v0FZ8zNTgy">
-  <img src="https://www.svgrepo.com/download/349527/telegram.svg" width="20"> Telegram Group
+  <img src="./images/telegram-svgrepo-com.svg" width="20"> Telegram Group
 </a>
 
 
@@ -36,6 +36,13 @@ Notifications from Synology Surveillance Station: motion, faces, license plates,
 ![](https://badgen.net/static/API/Synology%20Surveillance%20Station)
 ![](https://badgen.net/static/Made%20with/PHP)
 
+## Installation statistics
+![Total installs](https://img.shields.io/github/downloads/Striker72rus/SynologySStoTelegram/total?label=total%20installs&color=blue)
+![Latest stable version](https://img.shields.io/github/downloads/Striker72rus/SynologySStoTelegram/latest/total?label=latest%20stable&color=green)
+![Latest version including beta](https://img.shields.io/github/downloads-pre/Striker72rus/SynologySStoTelegram/latest/total?label=latest%20version%20(beta)&color=orange)
+
+The counters show how many times the `project.tar.gz` file was downloaded from GitHub releases: every installation and every update of the application. The application sends nothing anywhere, the statistics are kept by GitHub itself.
+
 ## Interface
 Dashboard: 24-hour summary, activity chart, latest motions (camera frames are blurred in the screenshots).
 
@@ -60,6 +67,7 @@ Health center (processes, storage, delivery) and API docs:
 - [SynologySStoTelegram](#synologysstotelegram)
   - [Contents](#contents)
   - [Features](#features)
+  - [Installation statistics](#installation-statistics)
   - [Interface](#interface)
   - [Preparation](#preparation)
   - [Installation via docker-compose](#installation-via-docker-compose)
@@ -69,6 +77,7 @@ Health center (processes, storage, delivery) and API docs:
   - [Camera setup](#camera-setup)
   - [Logs](#logs)
   - [Users](#users)
+  - [Terms of use and data](#terms-of-use-and-data)
   - [How to update the project](#how-to-update-the-project)
 - [Acknowledgements](#acknowledgements)
 - [Support the project](#support-the-project)
@@ -252,6 +261,15 @@ The "Users" section is available to the owner (super admin) only.
 - **Reset password** — set a new password; the user will be asked to change it at login (the "Password change required" column).
 - **Delete** — remove the account (with confirmation).
 - Login is protected by attempt throttling and CSRF protection.
+
+<a id="A11"></a>
+## Terms of use and data
+The project is distributed under the MIT license "as is", without warranties. The full terms open inside the application (bottom of the side menu — "Terms of use") and at registration; when the text changes, the application asks the administrator to confirm the new version.
+
+- **Where data is stored.** Only on your own server (local SQLite database and the `data` folder). The project author does not receive your data, there is no telemetry.
+- **Where data is sent.** Only where you configured it: your NAS, Telegram, VK, MAX, MQTT, webhooks, Web Push, VPN/proxy. Updates are checked and downloaded from GitHub. A log goes to the support bot only when you press "Send to support".
+- **Video surveillance is your responsibility.** Lawfulness of recording, notifying people, retention periods, access and forwarding of video are up to you.
+- **Security.** Do not expose the application port to the internet without protection (VPN, HTTPS proxy), use a dedicated Synology user with minimal rights, store backups securely.
 
 <a id="B6"></a>
 ## Acknowledgements
